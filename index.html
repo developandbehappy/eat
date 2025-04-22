@@ -835,7 +835,7 @@
             
             // График содержания белка в орехах
             const nutsProteinCtx = document.getElementById('nutsProteinChart').getContext('2d');
-            const nutsProteinChart = new Chart(proteinComparisonCtx, {
+            const nutsProteinChart = new Chart(nutsProteinCtx, {
     type: 'bar',
     data: {
         labels: ['Арахис', 'Миндаль', 'Фисташки', 'Кешью', 'Грецкие орехи', 'Говядина', 'Курица', 'Лосось', 'Свинина'],
