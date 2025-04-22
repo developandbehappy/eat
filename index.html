@@ -748,6 +748,7 @@
                     <select id="nutSelector">
                         <option value="walnut">Грецкий орех</option>
                         <option value="almond">Миндаль</option>
+                        <option value="peanut">Арахис</option>
                         <option value="hazelnut">Фундук</option>
                         <option value="cashew">Кешью</option>
                         <option value="pistachio">Фисташки</option>
@@ -834,37 +835,57 @@
             
             // График содержания белка в орехах
             const nutsProteinCtx = document.getElementById('nutsProteinChart').getContext('2d');
-            const nutsProteinChart = new Chart(nutsProteinCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['Миндаль', 'Фисташки', 'Кешью', 'Грецкие орехи', 'Фундук', 'Бразильские орехи', 'Кедровые орехи'],
-                    datasets: [{
-                        label: 'Содержание белка (г/100г)',
-                        data: [22, 21, 19, 17, 15, 15, 14],
-                        backgroundColor: 'rgba(139, 90, 43, 0.7)',
-                        borderColor: 'rgba(139, 90, 43, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: 'Содержание белка в различных видах орехов'
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'г/100г продукта'
-                            }
-                        }
-                    }
+            const nutsProteinChart = new Chart(proteinComparisonCtx, {
+    type: 'bar',
+    data: {
+        labels: ['Арахис', 'Миндаль', 'Фисташки', 'Кешью', 'Грецкие орехи', 'Говядина', 'Курица', 'Лосось', 'Свинина'],
+        datasets: [{
+            label: 'Содержание белка (г/100г)',
+            data: [26, 22, 21, 19, 17, 26, 23, 22, 19],
+            backgroundColor: [
+                'rgba(139, 90, 43, 0.7)',
+                'rgba(139, 90, 43, 0.7)',
+                'rgba(139, 90, 43, 0.7)',
+                'rgba(139, 90, 43, 0.7)',
+                'rgba(139, 90, 43, 0.7)',
+                'rgba(192, 57, 43, 0.7)',
+                'rgba(192, 57, 43, 0.7)',
+                'rgba(192, 57, 43, 0.7)',
+                'rgba(192, 57, 43, 0.7)'
+            ],
+            borderColor: [
+                'rgba(139, 90, 43, 1)',
+                'rgba(139, 90, 43, 1)',
+                'rgba(139, 90, 43, 1)',
+                'rgba(139, 90, 43, 1)',
+                'rgba(139, 90, 43, 1)',
+                'rgba(192, 57, 43, 1)',
+                'rgba(192, 57, 43, 1)',
+                'rgba(192, 57, 43, 1)',
+                'rgba(192, 57, 43, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: 'Сравнение содержания белка в орехах и мясе'
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'г/100г продукта'
                 }
-            });
+            }
+        }
+    }
+});
             
             // График содержания белка в мясе
             const meatProteinCtx = document.getElementById('meatProteinChart').getContext('2d');
@@ -903,48 +924,86 @@
             // График минералов в орехах
             const nutsMineralsCtx = document.getElementById('nutsMineralsChart').getContext('2d');
             const nutsMineralsChart = new Chart(nutsMineralsCtx, {
-                type: 'radar',
-                data: {
-                    labels: ['Железо', 'Цинк', 'Магний', 'Кальций', 'Селен'],
-                    datasets: [
-                        {
-                            label: 'Миндаль',
-                            data: [4, 3, 270, 269, 4],
-                            backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                            borderColor: 'rgba(255, 206, 86, 1)',
-                            pointBackgroundColor: 'rgba(255, 206, 86, 1)'
-                        },
-                        {
-                            label: 'Грецкие орехи',
-                            data: [3, 3, 158, 98, 5],
-                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                            borderColor: 'rgba(75, 192, 192, 1)',
-                            pointBackgroundColor: 'rgba(75, 192, 192, 1)'
-                        },
-                        {
-                            label: 'Бразильские орехи',
-                            data: [2, 4, 376, 160, 1917],
-                            backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                            borderColor: 'rgba(153, 102, 255, 1)',
-                            pointBackgroundColor: 'rgba(153, 102, 255, 1)'
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: 'Содержание минералов в различных видах орехов (мг/100г)'
-                        }
-                    },
-                    scales: {
-                        r: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
+    type: 'radar',
+    data: {
+        labels: ['Железо', 'Цинк', 'Магний', 'Кальций', 'Селен'],
+        datasets: [
+            {
+                label: 'Миндаль',
+                data: [4, 3, 270, 269, 4],
+                backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                borderColor: 'rgba(255, 206, 86, 1)',
+                pointBackgroundColor: 'rgba(255, 206, 86, 1)'
+            },
+            {
+                label: 'Грецкие орехи',
+                data: [3, 3, 158, 98, 5],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                pointBackgroundColor: 'rgba(75, 192, 192, 1)'
+            },
+            {
+                label: 'Бразильские орехи',
+                data: [2.4, 4.2, 376, 160, 1917],
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                borderColor: 'rgba(153, 102, 255, 1)',
+                pointBackgroundColor: 'rgba(153, 102, 255, 1)'
+            },
+            {
+                label: 'Фундук',
+                data: [4.7, 2.5, 163, 114, 2],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                pointBackgroundColor: 'rgba(255, 99, 132, 1)'
+            },
+            {
+                label: 'Кешью',
+                data: [6, 5.8, 292, 37, 20],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                pointBackgroundColor: 'rgba(54, 162, 235, 1)'
+            },
+            {
+                label: 'Фисташки',
+                data: [3.9, 2.3, 121, 105, 7],
+                backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                borderColor: 'rgba(255, 159, 64, 1)',
+                pointBackgroundColor: 'rgba(255, 159, 64, 1)'
+            },
+            {
+                label: 'Кедровые орехи',
+                data: [5.5, 6.5, 251, 16, 0.7],
+                backgroundColor: 'rgba(201, 203, 207, 0.2)',
+                borderColor: 'rgba(201, 203, 207, 1)',
+                pointBackgroundColor: 'rgba(201, 203, 207, 1)'
+            },
+            {
+                label: 'Арахис',
+                data: [4.6, 3.3, 168, 92, 7.2],
+                backgroundColor: 'rgba(100, 140, 50, 0.2)',
+                borderColor: 'rgba(100, 140, 50, 1)',
+                pointBackgroundColor: 'rgba(100, 140, 50, 1)'
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: 'Содержание минералов в различных видах орехов (мг/100г)'
+            },
+            legend: {
+                position: 'bottom'
+            }
+        },
+        scales: {
+            r: {
+                beginAtZero: true
+            }
+        }
+    }
+});
             
             // График минералов в мясе
             const meatMineralsCtx = document.getElementById('meatMineralsChart').getContext('2d');
@@ -994,55 +1053,57 @@
             
             // График сравнения содержания белка в орехах и мясе
             const proteinComparisonCtx = document.getElementById('proteinComparisonChart').getContext('2d');
-            const proteinComparisonChart = new Chart(proteinComparisonCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['Миндаль', 'Фисташки', 'Кешью', 'Грецкие орехи', 'Говядина', 'Курица', 'Лосось', 'Свинина'],
-                    datasets: [{
-                        label: 'Содержание белка (г/100г)',
-                        data: [22, 21, 19, 17, 26, 23, 22, 19],
-                        backgroundColor: [
-                            'rgba(139, 90, 43, 0.7)',
-                            'rgba(139, 90, 43, 0.7)',
-                            'rgba(139, 90, 43, 0.7)',
-                            'rgba(139, 90, 43, 0.7)',
-                            'rgba(192, 57, 43, 0.7)',
-                            'rgba(192, 57, 43, 0.7)',
-                            'rgba(192, 57, 43, 0.7)',
-                            'rgba(192, 57, 43, 0.7)'
-                        ],
-                        borderColor: [
-                            'rgba(139, 90, 43, 1)',
-                            'rgba(139, 90, 43, 1)',
-                            'rgba(139, 90, 43, 1)',
-                            'rgba(139, 90, 43, 1)',
-                            'rgba(192, 57, 43, 1)',
-                            'rgba(192, 57, 43, 1)',
-                            'rgba(192, 57, 43, 1)',
-                            'rgba(192, 57, 43, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: 'Сравнение содержания белка в орехах и мясе'
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'г/100г продукта'
-                            }
-                        }
-                    }
+           const proteinComparisonChart = new Chart(proteinComparisonCtx, {
+    type: 'bar',
+    data: {
+        labels: ['Арахис', 'Миндаль', 'Фисташки', 'Кешью', 'Грецкие орехи', 'Говядина', 'Курица', 'Лосось', 'Свинина'],
+        datasets: [{
+            label: 'Содержание белка (г/100г)',
+            data: [26, 22, 21, 19, 17, 26, 23, 22, 19],
+            backgroundColor: [
+                'rgba(139, 90, 43, 0.7)',
+                'rgba(139, 90, 43, 0.7)',
+                'rgba(139, 90, 43, 0.7)',
+                'rgba(139, 90, 43, 0.7)',
+                'rgba(139, 90, 43, 0.7)',
+                'rgba(192, 57, 43, 0.7)',
+                'rgba(192, 57, 43, 0.7)',
+                'rgba(192, 57, 43, 0.7)',
+                'rgba(192, 57, 43, 0.7)'
+            ],
+            borderColor: [
+                'rgba(139, 90, 43, 1)',
+                'rgba(139, 90, 43, 1)',
+                'rgba(139, 90, 43, 1)',
+                'rgba(139, 90, 43, 1)',
+                'rgba(139, 90, 43, 1)',
+                'rgba(192, 57, 43, 1)',
+                'rgba(192, 57, 43, 1)',
+                'rgba(192, 57, 43, 1)',
+                'rgba(192, 57, 43, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: 'Сравнение содержания белка в орехах и мясе'
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'г/100г продукта'
                 }
-            });
+            }
+        }
+    }
+});
             
             // График сравнения минералов в орехах и мясе
             const mineralsComparisonCtx = document.getElementById('mineralsComparisonChart').getContext('2d');
@@ -1122,6 +1183,17 @@
                         zinc: 2.5,
                         magnesium: 163,
                         calcium: 114
+                    },
+                    peanut: {
+                        name: 'Арахис',
+                        protein: 26,
+                        fat: 49,
+                        carbs: 16,
+                        fiber: 8,
+                        iron: 4.6,
+                        zinc: 3.3,
+                        magnesium: 168,
+                        calcium: 92
                     },
                     cashew: {
                         name: 'Кешью',
