@@ -917,46 +917,12 @@
             <div class="selectors">
                 <div class="selector">
                     <h3>Выберите первый продукт:</h3>
-                    <select id="product1Selector">
-                        <optgroup label="Орехи">
-                            <option value="walnut">Грецкий орех</option>
-                            <option value="almond">Миндаль</option>
-                            <option value="peanut">Арахис</option>
-                            <option value="hazelnut">Фундук</option>
-                            <option value="cashew">Кешью</option>
-                            <option value="pistachio">Фисташки</option>
-                            <option value="brazil">Бразильский орех</option>
-                            <option value="pine">Кедровый орех</option>
-                        </optgroup>
-                        <optgroup label="Мясо и рыба">
-                            <option value="beef">Говядина</option>
-                            <option value="pork">Свинина</option>
-                            <option value="chicken">Курица</option>
-                            <option value="salmon">Лосось</option>
-                        </optgroup>
-                    </select>
+                    <select id="product1Selector"></select>
                 </div>
 
                 <div class="selector">
                     <h3>Выберите второй продукт:</h3>
-                    <select id="product2Selector">
-                        <optgroup label="Орехи">
-                            <option value="walnut">Грецкий орех</option>
-                            <option value="almond">Миндаль</option>
-                            <option value="peanut">Арахис</option>
-                            <option value="hazelnut">Фундук</option>
-                            <option value="cashew">Кешью</option>
-                            <option value="pistachio">Фисташки</option>
-                            <option value="brazil">Бразильский орех</option>
-                            <option value="pine">Кедровый орех</option>
-                        </optgroup>
-                        <optgroup label="Мясо и рыба">
-                            <option value="beef">Говядина</option>
-                            <option value="pork">Свинина</option>
-                            <option value="chicken">Курица</option>
-                            <option value="salmon">Лосось</option>
-                        </optgroup>
-                    </select>
+                    <select id="product2Selector"></select>
                 </div>
             </div>
 
@@ -1005,6 +971,7 @@
         <p>Информация на сайте предоставлена в образовательных целях и не является медицинской рекомендацией. Перед
             существенным изменением рациона проконсультируйтесь с врачом или диетологом.</p>
     </footer>
+    <script src="./nutrionData.js"></script>
 
     <script>
         // Открытие вкладки по умолчанию
@@ -1559,292 +1526,13 @@
             let comparisonRadarChart = null;
 
             // Данные для инструмента сравнения
-            const nutritionData = {
-                nuts: {
-                    walnut: {
-                        name: 'Грецкий орех',
-                        protein: 17,
-                        fat: 65,
-                        carbs: 14,
-                        fiber: 7,
-                        calories: 654,
-                        iron: 3,
-                        zinc: 3,
-                        magnesium: 158,
-                        calcium: 98,
-                        selenium: 4.9,
-                        potassium: 441,
-                        phosphorus: 346,
-                        manganese: 3.4,
-                        copper: 1.6,
-                        vitaminB1: 0.34,
-                        vitaminB2: 0.15,
-                        vitaminB3: 1.1,
-                        vitaminB6: 0.54,
-                        folicAcid: 98
-                    },
-                    almond: {
-                        name: 'Миндаль',
-                        protein: 22,
-                        fat: 50,
-                        carbs: 22,
-                        fiber: 12,
-                        calories: 579,
-                        iron: 4,
-                        zinc: 3,
-                        magnesium: 270,
-                        calcium: 269,
-                        selenium: 4.1,
-                        potassium: 733,
-                        phosphorus: 481,
-                        manganese: 2.3,
-                        copper: 1.0,
-                        vitaminB1: 0.21,
-                        vitaminB2: 1.14,
-                        vitaminB3: 3.6,
-                        vitaminB6: 0.14,
-                        folicAcid: 44
-                    },
-                    hazelnut: {
-                        name: 'Фундук',
-                        protein: 15,
-                        fat: 62,
-                        carbs: 17,
-                        fiber: 10,
-                        calories: 628,
-                        iron: 4.7,
-                        zinc: 2.5,
-                        magnesium: 163,
-                        calcium: 114,
-                        selenium: 2.4,
-                        potassium: 680,
-                        phosphorus: 290,
-                        manganese: 6.2,
-                        copper: 1.7,
-                        vitaminB1: 0.64,
-                        vitaminB2: 0.11,
-                        vitaminB3: 1.8,
-                        vitaminB6: 0.56,
-                        folicAcid: 113
-                    },
-                    peanut: {
-                        name: 'Арахис',
-                        protein: 26,
-                        fat: 49,
-                        carbs: 16,
-                        fiber: 8,
-                        calories: 567,
-                        iron: 4.6,
-                        zinc: 3.3,
-                        magnesium: 168,
-                        calcium: 92,
-                        selenium: 7.2,
-                        potassium: 705,
-                        phosphorus: 376,
-                        manganese: 1.9,
-                        copper: 1.1,
-                        vitaminB1: 0.64,
-                        vitaminB2: 0.14,
-                        vitaminB3: 14.0,
-                        vitaminB6: 0.35,
-                        folicAcid: 240
-                    },
-                    cashew: {
-                        name: 'Кешью',
-                        protein: 19,
-                        fat: 44,
-                        carbs: 30,
-                        fiber: 3,
-                        calories: 553,
-                        iron: 6,
-                        zinc: 5.8,
-                        magnesium: 292,
-                        calcium: 37,
-                        selenium: 19.9,
-                        potassium: 660,
-                        phosphorus: 593,
-                        manganese: 1.7,
-                        copper: 2.2,
-                        vitaminB1: 0.42,
-                        vitaminB2: 0.06,
-                        vitaminB3: 1.1,
-                        vitaminB6: 0.42,
-                        folicAcid: 25
-                    },
-                    pistachio: {
-                        name: 'Фисташки',
-                        protein: 21,
-                        fat: 46,
-                        carbs: 28,
-                        fiber: 10,
-                        calories: 557,
-                        iron: 3.9,
-                        zinc: 2.3,
-                        magnesium: 121,
-                        calcium: 105,
-                        selenium: 7.0,
-                        potassium: 1025,
-                        phosphorus: 490,
-                        manganese: 1.2,
-                        copper: 1.3,
-                        vitaminB1: 0.87,
-                        vitaminB2: 0.16,
-                        vitaminB3: 1.3,
-                        vitaminB6: 1.7,
-                        folicAcid: 51
-                    },
-                    brazil: {
-                        name: 'Бразильский орех',
-                        protein: 15,
-                        fat: 67,
-                        carbs: 12,
-                        fiber: 8,
-                        calories: 656,
-                        iron: 2.4,
-                        zinc: 4.2,
-                        magnesium: 376,
-                        calcium: 160,
-                        selenium: 1917.0,
-                        potassium: 659,
-                        phosphorus: 725,
-                        manganese: 1.2,
-                        copper: 1.8,
-                        vitaminB1: 0.62,
-                        vitaminB2: 0.04,
-                        vitaminB3: 0.3,
-                        vitaminB6: 0.1,
-                        folicAcid: 22
-                    },
-                    pine: {
-                        name: 'Кедровый орех',
-                        protein: 14,
-                        fat: 70,
-                        carbs: 13,
-                        fiber: 3,
-                        calories: 673,
-                        iron: 5.5,
-                        zinc: 6.5,
-                        magnesium: 251,
-                        calcium: 16,
-                        selenium: 0.7,
-                        potassium: 597,
-                        phosphorus: 575,
-                        manganese: 8.8,
-                        copper: 1.6,
-                        vitaminB1: 0.36,
-                        vitaminB2: 0.23,
-                        vitaminB3: 4.4,
-                        vitaminB6: 0.09,
-                        folicAcid: 34
-                    }
-                },
-                meat: {
-                    beef: {
-                        name: 'Говядина',
-                        protein: 26,
-                        fat: 15,
-                        carbs: 0,
-                        fiber: 0,
-                        calories: 250,
-                        iron: 2.6,
-                        zinc: 5.2,
-                        magnesium: 22,
-                        calcium: 5,
-                        selenium: 26.0,
-                        potassium: 319,
-                        phosphorus: 215,
-                        manganese: 0.02,
-                        copper: 0.08,
-                        vitaminB1: 0.04,
-                        vitaminB2: 0.18,
-                        vitaminB3: 5.4,
-                        vitaminB6: 0.4,
-                        folicAcid: 9
-                    },
-                    pork: {
-                        name: 'Свинина',
-                        protein: 19,
-                        fat: 18,
-                        carbs: 0,
-                        fiber: 0,
-                        calories: 242,
-                        iron: 0.8,
-                        zinc: 2.1,
-                        magnesium: 24,
-                        calcium: 7,
-                        selenium: 36.0,
-                        potassium: 340,
-                        phosphorus: 200,
-                        manganese: 0.01,
-                        copper: 0.07,
-                        vitaminB1: 0.85,
-                        vitaminB2: 0.27,
-                        vitaminB3: 4.8,
-                        vitaminB6: 0.4,
-                        folicAcid: 4
-                    },
-                    chicken: {
-                        name: 'Курица',
-                        protein: 23,
-                        fat: 2,
-                        carbs: 0,
-                        fiber: 0,
-                        calories: 110,
-                        iron: 0.9,
-                        zinc: 1.0,
-                        magnesium: 27,
-                        calcium: 12,
-                        selenium: 22.0,
-                        potassium: 256,
-                        phosphorus: 210,
-                        manganese: 0.02,
-                        copper: 0.04,
-                        vitaminB1: 0.07,
-                        vitaminB2: 0.11,
-                        vitaminB3: 10.1,
-                        vitaminB6: 0.5,
-                        folicAcid: 6
-                    },
-                    salmon: {
-                        name: 'Лосось',
-                        protein: 22,
-                        fat: 13,
-                        carbs: 0,
-                        fiber: 0,
-                        calories: 206,
-                        iron: 0.8,
-                        zinc: 0.5,
-                        magnesium: 29,
-                        calcium: 13,
-                        selenium: 36.0,
-                        potassium: 363,
-                        phosphorus: 252,
-                        manganese: 0.02,
-                        copper: 0.04,
-                        vitaminB1: 0.22,
-                        vitaminB2: 0.32,
-                        vitaminB3: 7.9,
-                        vitaminB6: 0.6,
-                        folicAcid: 26
-                    }
-                }
-            };
+
 
             const allProducts = {
-                // Орехи
-                walnut: nutritionData.nuts.walnut,
-                almond: nutritionData.nuts.almond,
-                peanut: nutritionData.nuts.peanut,
-                hazelnut: nutritionData.nuts.hazelnut,
-                cashew: nutritionData.nuts.cashew,
-                pistachio: nutritionData.nuts.pistachio,
-                brazil: nutritionData.nuts.brazil,
-                pine: nutritionData.nuts.pine,
-                // Мясо и рыба
-                beef: nutritionData.meat.beef,
-                pork: nutritionData.meat.pork,
-                chicken: nutritionData.meat.chicken,
-                salmon: nutritionData.meat.salmon
+                ...nutritionData.nuts,
+                ...nutritionData.meat,
+                ...nutritionData.fruits,
+                ...nutritionData.vegetables
             };
 
 
@@ -1863,43 +1551,68 @@
                     comparisonBarChart.destroy();
                 }
 
+
                 // Радарный график для сравнения многих параметров
                 const comparisonLabels = [
                     // Макронутриенты
                     'Белок', 'Жиры', 'Углеводы', 'Клетчатка', 'Калории',
                     // Минералы
-                    'Железо', 'Цинк', 'Магний', 'Кальций', 'Селен', 'Калий', 'Фосфор'
+                    'Железо', 'Цинк', 'Магний', 'Кальций', 'Селен', 'Калий', 'Фосфор', 'Йод',
+                    // Витамины 
+                    'Вит. B1', 'Вит. B2', 'Вит. B3', 'Вит. B6', 'Вит. B12', 'Вит. D', 'Вит. E'
                 ];
 
                 // Подготавливаем данные с масштабированием для лучшей визуализации
                 const product1Values = [
+                    // Макронутриенты
                     product1Data.protein,
                     product1Data.fat,
                     product1Data.carbs,
                     product1Data.fiber,
                     product1Data.calories / 100,  // Масштабирование калорий
+                    // Минералы
                     product1Data.iron,
                     product1Data.zinc,
                     product1Data.magnesium / 10,  // Масштабирование магния
                     product1Data.calcium / 10,    // Масштабирование кальция
                     product1Data.selenium,
                     product1Data.potassium / 100, // Масштабирование калия
-                    product1Data.phosphorus / 100 // Масштабирование фосфора
+                    product1Data.phosphorus / 100, // Масштабирование фосфора
+                    product1Data.iodine || 0,     // Йод
+                    // Витамины
+                    product1Data.vitaminB1,
+                    product1Data.vitaminB2,
+                    product1Data.vitaminB3,
+                    product1Data.vitaminB6,
+                    product1Data.vitaminB12 || 0,
+                    product1Data.vitaminD || 0,
+                    product1Data.vitaminE || 0
                 ];
 
                 const product2Values = [
+                    // Макронутриенты
                     product2Data.protein,
                     product2Data.fat,
                     product2Data.carbs,
                     product2Data.fiber,
                     product2Data.calories / 100,
+                    // Минералы
                     product2Data.iron,
                     product2Data.zinc,
                     product2Data.magnesium / 10,
                     product2Data.calcium / 10,
                     product2Data.selenium,
                     product2Data.potassium / 100,
-                    product2Data.phosphorus / 100
+                    product2Data.phosphorus / 100,
+                    product2Data.iodine || 0,     // Йод
+                    // Витамины
+                    product2Data.vitaminB1,
+                    product2Data.vitaminB2,
+                    product2Data.vitaminB3,
+                    product2Data.vitaminB6,
+                    product2Data.vitaminB12 || 0,
+                    product2Data.vitaminD || 0,
+                    product2Data.vitaminE || 0
                 ];
 
                 // Создаем радарный график
@@ -2149,6 +1862,11 @@
             <td colspan="5" class="category-header">Минералы</td>
         </tr>
     `;
+                // Добавляем минералы (дополняем существующий раздел минералов)
+                comparisonTable += createComparisonRowWithRDI('Йод', product1Data.iodine || 'N/A', product2Data.iodine || 'N/A', 'мкг', '150-200');
+                comparisonTable += createComparisonRowWithRDI('Фторид', product1Data.fluoride || 'N/A', product2Data.fluoride || 'N/A', 'мг', '3-4');
+                comparisonTable += createComparisonRowWithRDI('Хром', product1Data.chromium || 'N/A', product2Data.chromium || 'N/A', 'мкг', '25-35');
+                comparisonTable += createComparisonRowWithRDI('Молибден', product1Data.molybdenum || 'N/A', product2Data.molybdenum || 'N/A', 'мкг', '45-50');
                 comparisonTable += createComparisonRowWithRDI('Железо', product1Data.iron, product2Data.iron, 'мг', '8-10');
                 comparisonTable += createComparisonRowWithRDI('Цинк', product1Data.zinc, product2Data.zinc, 'мг', '10-12');
                 comparisonTable += createComparisonRowWithRDI('Магний', product1Data.magnesium, product2Data.magnesium, 'мг', '350-400');
@@ -2158,10 +1876,8 @@
                 comparisonTable += createComparisonRowWithRDI('Фосфор', product1Data.phosphorus, product2Data.phosphorus, 'мг', '700-800');
                 comparisonTable += createComparisonRowWithRDI('Марганец', product1Data.manganese || 0, product2Data.manganese || 0, 'мг', '2.3-3.0');
                 comparisonTable += createComparisonRowWithRDI('Медь', product1Data.copper || 0, product2Data.copper || 0, 'мг', '0.9-1.3');
-                comparisonTable += createComparisonRowWithRDI('Йод', 'N/A', 'N/A', 'мкг', '150');
-                comparisonTable += createComparisonRowWithRDI('Хром', 'N/A', 'N/A', 'мкг', '25-35');
-                comparisonTable += createComparisonRowWithRDI('Молибден', 'N/A', 'N/A', 'мкг', '45-50');
-                comparisonTable += createComparisonRowWithRDI('Натрий', 'N/A', 'N/A', 'мг', '1500-2300');
+                comparisonTable += createComparisonRowWithRDI('Натрий', product1Data.sodium || 'N/A', product2Data.sodium || 'N/A', 'мг', '1500-2300');
+                comparisonTable += createComparisonRowWithRDI('Холин', product1Data.choline || 'N/A', product2Data.choline || 'N/A', 'мг', '425-550');
 
                 // Добавляем витамины
                 comparisonTable += `
@@ -2169,19 +1885,19 @@
             <td colspan="5" class="category-header">Витамины</td>
         </tr>
     `;
-                comparisonTable += createComparisonRowWithRDI('Витамин A', 'N/A', 'N/A', 'мкг', '800-1000');
-                comparisonTable += createComparisonRowWithRDI('Витамин C', 'N/A', 'N/A', 'мг', '75-90');
-                comparisonTable += createComparisonRowWithRDI('Витамин D', 'N/A', product2Data.vitaminD || 'N/A', 'мкг', '15-20');
-                comparisonTable += createComparisonRowWithRDI('Витамин E', product1Data.vitaminE || 'N/A', 'N/A', 'мг', '15');
-                comparisonTable += createComparisonRowWithRDI('Витамин K', 'N/A', 'N/A', 'мкг', '90-120');
+                comparisonTable += createComparisonRowWithRDI('Витамин A', product1Data.vitaminA || 'N/A', product2Data.vitaminA || 'N/A', 'мкг', '800-1000');
+                comparisonTable += createComparisonRowWithRDI('Витамин C', product1Data.vitaminC || 'N/A', product2Data.vitaminC || 'N/A', 'мг', '75-90');
+                comparisonTable += createComparisonRowWithRDI('Витамин D', product1Data.vitaminD || 'N/A', product2Data.vitaminD || 'N/A', 'мкг', '15-20');
+                comparisonTable += createComparisonRowWithRDI('Витамин E', product1Data.vitaminE || 'N/A', product2Data.vitaminE || 'N/A', 'мг', '15');
+                comparisonTable += createComparisonRowWithRDI('Витамин K', product1Data.vitaminK || 'N/A', product2Data.vitaminK || 'N/A', 'мкг', '90-120');
                 comparisonTable += createComparisonRowWithRDI('Витамин B1 (Тиамин)', product1Data.vitaminB1, product2Data.vitaminB1, 'мг', '1.1-1.2');
                 comparisonTable += createComparisonRowWithRDI('Витамин B2 (Рибофлавин)', product1Data.vitaminB2, product2Data.vitaminB2, 'мг', '1.1-1.3');
                 comparisonTable += createComparisonRowWithRDI('Витамин B3 (Ниацин)', product1Data.vitaminB3, product2Data.vitaminB3, 'мг', '14-16');
-                comparisonTable += createComparisonRowWithRDI('Витамин B5 (Пантотеновая кислота)', 'N/A', 'N/A', 'мг', '5');
+                comparisonTable += createComparisonRowWithRDI('Витамин B5 (Пантотеновая кислота)', product1Data.vitaminB5 || 'N/A', product2Data.vitaminB5 || 'N/A', 'мг', '5');
                 comparisonTable += createComparisonRowWithRDI('Витамин B6', product1Data.vitaminB6, product2Data.vitaminB6, 'мг', '1.3-1.7');
-                comparisonTable += createComparisonRowWithRDI('Витамин B7 (Биотин)', 'N/A', 'N/A', 'мкг', '30');
+                comparisonTable += createComparisonRowWithRDI('Витамин B7 (Биотин)', product1Data.vitaminB7 || 'N/A', product2Data.vitaminB7 || 'N/A', 'мкг', '30');
                 comparisonTable += createComparisonRowWithRDI('Витамин B9 (Фолиевая кислота)', product1Data.folicAcid, product2Data.folicAcid, 'мкг', '400');
-                comparisonTable += createComparisonRowWithRDI('Витамин B12', 'N/A', product2Data.vitaminB12 || 'N/A', 'мкг', '2.4');
+                comparisonTable += createComparisonRowWithRDI('Витамин B12', product1Data.vitaminB12 || 'N/A', product2Data.vitaminB12 || 'N/A', 'мкг', '2.4');
 
                 // Другие питательные вещества
                 comparisonTable += `
@@ -2189,14 +1905,34 @@
             <td colspan="5" class="category-header">Другие питательные вещества</td>
         </tr>
     `;
-                comparisonTable += createComparisonRowWithRDI('Омега-3 жирные кислоты', 'N/A', 'N/A', 'г', '1.1-1.6');
-                comparisonTable += createComparisonRowWithRDI('Омега-6 жирные кислоты', 'N/A', 'N/A', 'г', '14-17');
-                comparisonTable += createComparisonRowWithRDI('Холестерин', 'N/A', product2Data.cholesterol || 'N/A', 'мг', '<300');
-                comparisonTable += createComparisonRowWithRDI('Хлорофилл', 'N/A', 'N/A', 'мг', 'Не установлена');
-                comparisonTable += createComparisonRowWithRDI('Коэнзим Q10', 'N/A', 'N/A', 'мг', '30-100');
-                comparisonTable += createComparisonRowWithRDI('Ликопин', 'N/A', 'N/A', 'мг', '6-15');
-                comparisonTable += createComparisonRowWithRDI('Лютеин и Зеаксантин', 'N/A', 'N/A', 'мг', '6-10');
-                comparisonTable += createComparisonRowWithRDI('Ресвератрол', 'N/A', 'N/A', 'мг', 'Не установлена');
+                comparisonTable += createComparisonRowWithRDI('Омега-3 жирные кислоты', product1Data.omega3 || 'N/A', product2Data.omega3 || 'N/A', 'г', '1.1-1.6');
+                comparisonTable += createComparisonRowWithRDI('Омега-6 жирные кислоты', product1Data.omega6 || 'N/A', product2Data.omega6 || 'N/A', 'г', '14-17');
+                comparisonTable += createComparisonRowWithRDI('Холестерин', product1Data.cholesterol || 'N/A', product2Data.cholesterol || 'N/A', 'мг', '<300');
+
+                // Вещества, специфичные для мяса
+                if (product2Data.creatine || product1Data.creatine) {
+                    comparisonTable += createComparisonRowWithRDI('Креатин', product1Data.creatine || 'N/A', product2Data.creatine || 'N/A', 'мг', '1000-3000');
+                }
+                if (product2Data.carnosine || product1Data.carnosine) {
+                    comparisonTable += createComparisonRowWithRDI('Карнозин', product1Data.carnosine || 'N/A', product2Data.carnosine || 'N/A', 'мг', 'Не установлена');
+                }
+                if (product2Data.taurine || product1Data.taurine) {
+                    comparisonTable += createComparisonRowWithRDI('Таурин', product1Data.taurine || 'N/A', product2Data.taurine || 'N/A', 'мг', '500-1000');
+                }
+                if (product2Data.coq10 || product1Data.coq10) {
+                    comparisonTable += createComparisonRowWithRDI('Коэнзим Q10', product1Data.coq10 || 'N/A', product2Data.coq10 || 'N/A', 'мг', '30-100');
+                }
+
+                // Каротиноиды и другие растительные соединения
+                if (product1Data.lutein || product2Data.lutein) {
+                    comparisonTable += createComparisonRowWithRDI('Лютеин', product1Data.lutein || 'N/A', product2Data.lutein || 'N/A', 'мкг', '6000-10000');
+                }
+                if (product1Data.betaCarotene || product2Data.betaCarotene) {
+                    comparisonTable += createComparisonRowWithRDI('Бета-каротин', product1Data.betaCarotene || 'N/A', product2Data.betaCarotene || 'N/A', 'мкг', '2000-4000');
+                }
+                if (product2Data.astaxanthin) {
+                    comparisonTable += createComparisonRowWithRDI('Астаксантин', product1Data.astaxanthin || 'N/A', product2Data.astaxanthin || 'N/A', 'мг', '2-4');
+                }
 
                 comparisonTable += `</table>`;
 
@@ -2243,10 +1979,50 @@
                     conclusions += `<li><strong>Кальций:</strong> ${product1Data.name} содержит в ${Math.round(product1Data.calcium / product2Data.calcium)} раз больше кальция, чем ${product2Data.name}.</li>`;
                 }
 
-                // Добавляем вывод о витаминах и минералах, которые отсутствуют
-                conclusions += `<li><strong>Витамин B12:</strong> Присутствует только в мясе и рыбе, отсутствует в растительных продуктах. Важен для нервной системы и кроветворения.</li>`;
-                conclusions += `<li><strong>Витамин C:</strong> Отсутствует как в мясе, так и в орехах. Необходимо получать из фруктов и овощей.</li>`;
-                conclusions += `<li><strong>Витамин D:</strong> В значимых количествах содержится только в жирной рыбе. Рекомендуется дополнительно получать с солнечными ваннами или добавками.</li>`;
+                // Выводы о важных микронутриентах
+                if (product1Data.vitaminE && product2Data.vitaminE && product1Data.vitaminE > product2Data.vitaminE * 3) {
+                    conclusions += `<li><strong>Витамин E:</strong> ${product1Data.name} содержит в ${Math.round(product1Data.vitaminE / product2Data.vitaminE)} раз больше витамина E - мощного антиоксиданта.</li>`;
+                }
+
+                // Сравнение омега-3 жирных кислот
+                if (product1Data.omega3 && product2Data.omega3) {
+                    if (product1Data.omega3 > product2Data.omega3 * 2) {
+                        conclusions += `<li><strong>Омега-3:</strong> ${product1Data.name} содержит значительно больше омега-3 жирных кислот, полезных для сердечно-сосудистой системы.</li>`;
+                    } else if (product2Data.omega3 > product1Data.omega3 * 2) {
+                        conclusions += `<li><strong>Омега-3:</strong> ${product2Data.name} является лучшим источником омега-3 жирных кислот в этой паре.</li>`;
+                    }
+                }
+
+                if (product1Data.iodine && product2Data.iodine) {
+                    if (product1Data.iodine > product2Data.iodine * 2) {
+                        conclusions += `<li><strong>Йод:</strong> ${product1Data.name} содержит в ${(product1Data.iodine / product2Data.iodine).toFixed(1)} раз больше йода, важного для щитовидной железы.</li>`;
+                    } else if (product2Data.iodine > product1Data.iodine * 2) {
+                        conclusions += `<li><strong>Йод:</strong> ${product2Data.name} содержит в ${(product2Data.iodine / product1Data.iodine).toFixed(1)} раз больше йода, что делает его лучшим выбором для поддержания здоровья щитовидной железы.</li>`;
+                    }
+                }
+
+                // Особо отмечаем рыбу как источник йода
+                if (product1Data.name === 'Лосось' || product2Data.name === 'Лосось') {
+                    const iodineProduct = product1Data.name === 'Лосось' ? product1Data : product2Data;
+                    const otherProduct = product1Data.name === 'Лосось' ? product2Data : product1Data;
+
+                    if (iodineProduct.iodine > otherProduct.iodine * 5) {
+                        conclusions += `<li><strong>Важно о йоде:</strong> ${iodineProduct.name} является исключительно богатым источником йода (${iodineProduct.iodine} мкг/100г), необходимого для нормальной работы щитовидной железы и метаболизма.</li>`;
+                    }
+                }
+
+                // Уникальные питательные вещества
+                if (product2Data.vitaminB12 && (!product1Data.vitaminB12 || product1Data.vitaminB12 === 0)) {
+                    conclusions += `<li><strong>Витамин B12:</strong> Содержится только в ${product2Data.name} (${product2Data.vitaminB12} мкг/100г). Витамин B12 критически важен для нервной системы и синтеза ДНК.</li>`;
+                }
+
+                if (product2Data.creatine && (!product1Data.creatine || product1Data.creatine === 0)) {
+                    conclusions += `<li><strong>Креатин:</strong> Присутствует только в ${product2Data.name} (${product2Data.creatine} мг/100г). Креатин важен для энергетического обмена в мышцах.</li>`;
+                }
+
+                if (product1Data.lutein && (!product2Data.lutein || product2Data.lutein === 0) && product1Data.lutein > 50) {
+                    conclusions += `<li><strong>Лютеин:</strong> ${product1Data.name} является хорошим источником лютеина (${product1Data.lutein} мкг/100г), который полезен для здоровья глаз.</li>`;
+                }
 
                 conclusions += `
             </ul>
@@ -2297,11 +2073,68 @@
     `;
             }
 
+            function populateProductSelectors() {
+                // Получаем оба селектора
+                const selector1 = document.getElementById('product1Selector');
+                const selector2 = document.getElementById('product2Selector');
+
+                // Очищаем их содержимое, если оно уже было заполнено
+                selector1.innerHTML = '';
+                selector2.innerHTML = '';
+
+                // Словарь для перевода названий категорий
+                const categoryNames = {
+                    'nuts': 'Орехи',
+                    'meat': 'Мясо и рыба',
+                    'vegetables': 'Овощи',
+                    'fruits': 'Фрукты'
+                };
+
+                // Перебираем все категории продуктов
+                for (const category in nutritionData) {
+                    // Создаем группы опций для обоих селекторов
+                    const optgroup1 = document.createElement('optgroup');
+                    const optgroup2 = document.createElement('optgroup');
+
+                    // Устанавливаем метку группы на русском языке
+                    optgroup1.label = categoryNames[category];
+                    optgroup2.label = categoryNames[category];
+
+                    // Перебираем все продукты в категории
+                    for (const productId in nutritionData[category]) {
+                        const product = nutritionData[category][productId];
+
+                        // Создаем элементы option для обоих селекторов
+                        const option1 = document.createElement('option');
+                        const option2 = document.createElement('option');
+
+                        // Устанавливаем значение и текст для каждой опции
+                        option1.value = productId;
+                        option1.textContent = product.name;
+
+                        option2.value = productId;
+                        option2.textContent = product.name;
+
+                        // Добавляем опции в группы
+                        optgroup1.appendChild(option1);
+                        optgroup2.appendChild(option2);
+                    }
+
+                    // Добавляем группы в селекторы
+                    selector1.appendChild(optgroup1);
+                    selector2.appendChild(optgroup2);
+                }
+
+            }
+
+
+
             // Обработчики событий для селекторов
             document.getElementById('product1Selector').addEventListener('change', updateComparisonChart);
             document.getElementById('product2Selector').addEventListener('change', updateComparisonChart);
 
             // Инициализация инструмента сравнения
+            populateProductSelectors();
             updateComparisonChart();
         });
     </script>
