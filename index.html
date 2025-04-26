@@ -4,6 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Основные метатеги для SEO -->
+    <meta name="description" content="Подробное сравнение питательной ценности орехов и мяса. Информация о белках, жирах, витаминах и минералах в орехах и мясе. Узнайте, как заменить мясо орехами в своем рационе.">
+    <meta name="keywords" content="орехи, мясо, питательная ценность, белки, жиры, минералы, витамины, растительный белок, грецкие орехи, миндаль, фундук, кешью, фисташки, говядина, курица, свинина, лосось, здоровое питание, вегетарианство">
+    <meta name="author" content="Специалист по здоровому питанию">
+    
+    <!-- Метатеги для управления индексацией -->
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://developandbehappy.github.io/eat/index.html">
+    
+    <!-- Метатеги Open Graph для социальных сетей -->
+    <meta property="og:title" content="Сравнение орехов и мяса: питательная ценность и возможности замены">
+    <meta property="og:description" content="Подробное сравнение питательной ценности орехов и мяса. Узнайте, как орехи могут заменить мясо в вашем рационе.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://developandbehappy.github.io/eat/index.html">
+    <meta property="og:image" content="https://developandbehappy.github.io/eat/images/nuts-and-meat-comparison.jpg">
+    
+    <!-- Метатеги для Яндекса -->
+    <meta name="yandex-verification" content="ваш_код_верификации">
+    <meta property="ya:ovs" content="яндекс_код_для_верификации_если_есть">
+    
+    <!-- Метатеги Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Сравнение орехов и мяса: питательная ценность и возможности замены">
+    <meta name="twitter:description" content="Подробное сравнение питательной ценности орехов и мяса. Узнайте, как орехи могут заменить мясо в вашем рационе.">
+    
+    <!-- Метатеги для мобильной оптимизации (добавляем к существующему viewport) -->
+    <meta name="theme-color" content="#8b5a2b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    
     <title>Сравнение орехов и мяса: питательная ценность и возможности замены</title>
     <style>
         body {
@@ -204,6 +240,52 @@
             border-left: 5px solid #52c41a;
         }
 
+        .charts-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .radar-chart {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .category-header {
+            background-color: #f1f1f1;
+            font-weight: bold;
+        }
+
+        .higher {
+            color: #52c41a;
+            font-weight: bold;
+        }
+
+        .slightly-higher {
+            color: #95de64;
+        }
+
+        .lower {
+            color: #f5222d;
+            font-weight: bold;
+        }
+
+        .slightly-lower {
+            color: #ff7875;
+        }
+
+        .similar {
+            color: #faad14;
+        }
+
         @media (max-width: 768px) {
             .selectors {
                 flex-direction: column;
@@ -228,11 +310,12 @@
     </section>
 
     <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'nutsInfo')" id="defaultOpen">Орехи: состав и польза</button>
+        <button class="tablinks" onclick="openTab(event, 'compareTool')" id="defaultOpen">Сравнительный
+            инструмент</button>
+        <button class="tablinks" onclick="openTab(event, 'nutsInfo')">Орехи: состав и польза</button>
         <button class="tablinks" onclick="openTab(event, 'meatInfo')">Мясо: состав и польза</button>
         <button class="tablinks" onclick="openTab(event, 'comparison')">Сравнение и замена</button>
         <button class="tablinks" onclick="openTab(event, 'recommendations')">Рекомендации</button>
-        <button class="tablinks" onclick="openTab(event, 'compareTool')">Сравнительный инструмент</button>
     </div>
 
     <div id="nutsInfo" class="tabcontent">
@@ -815,34 +898,59 @@
         <div class="comparison-tool">
             <div class="selectors">
                 <div class="selector">
-                    <h3>Выберите орех:</h3>
-                    <select id="nutSelector">
-                        <option value="walnut">Грецкий орех</option>
-                        <option value="almond">Миндаль</option>
-                        <option value="peanut">Арахис</option>
-                        <option value="hazelnut">Фундук</option>
-                        <option value="cashew">Кешью</option>
-                        <option value="pistachio">Фисташки</option>
-                        <option value="brazil">Бразильский орех</option>
-                        <option value="pine">Кедровый орех</option>
+                    <h3>Выберите первый продукт:</h3>
+                    <select id="product1Selector">
+                        <optgroup label="Орехи">
+                            <option value="walnut">Грецкий орех</option>
+                            <option value="almond">Миндаль</option>
+                            <option value="peanut">Арахис</option>
+                            <option value="hazelnut">Фундук</option>
+                            <option value="cashew">Кешью</option>
+                            <option value="pistachio">Фисташки</option>
+                            <option value="brazil">Бразильский орех</option>
+                            <option value="pine">Кедровый орех</option>
+                        </optgroup>
+                        <optgroup label="Мясо и рыба">
+                            <option value="beef">Говядина</option>
+                            <option value="pork">Свинина</option>
+                            <option value="chicken">Курица</option>
+                            <option value="salmon">Лосось</option>
+                        </optgroup>
                     </select>
                 </div>
 
                 <div class="selector">
-                    <h3>Выберите мясо:</h3>
-                    <select id="meatSelector">
-                        <option value="beef">Говядина</option>
-                        <option value="pork">Свинина</option>
-                        <option value="chicken">Курица</option>
-                        <option value="salmon">Лосось</option>
+                    <h3>Выберите второй продукт:</h3>
+                    <select id="product2Selector">
+                        <optgroup label="Орехи">
+                            <option value="walnut">Грецкий орех</option>
+                            <option value="almond">Миндаль</option>
+                            <option value="peanut">Арахис</option>
+                            <option value="hazelnut">Фундук</option>
+                            <option value="cashew">Кешью</option>
+                            <option value="pistachio">Фисташки</option>
+                            <option value="brazil">Бразильский орех</option>
+                            <option value="pine">Кедровый орех</option>
+                        </optgroup>
+                        <optgroup label="Мясо и рыба">
+                            <option value="beef">Говядина</option>
+                            <option value="pork">Свинина</option>
+                            <option value="chicken">Курица</option>
+                            <option value="salmon">Лосось</option>
+                        </optgroup>
                     </select>
                 </div>
             </div>
 
             <div class="result-comparison">
                 <h3>Сравнение питательной ценности (на 100г продукта)</h3>
-                <div class="radar-chart">
-                    <canvas id="comparisonRadarChart"></canvas>
+                <div class="charts-row">
+                    <div class="radar-chart">
+                        <canvas id="comparisonRadarChart"></canvas>
+                    </div>
+                    <div class="radar-chart">
+                        <canvas id="comparisonBarChart"></canvas>
+                    </div>
                 </div>
                 <div id="comparisonDetails">
                     <p>Выберите продукты для сравнения их питательной ценности.</p>
@@ -883,6 +991,12 @@
     <script>
         // Открытие вкладки по умолчанию
         document.getElementById("defaultOpen").click();
+        const comparisonRadarCtx = document.getElementById('comparisonRadarChart').getContext('2d');
+        let comparisonRadarChart = null;
+
+        // Добавляем определение для второго графика
+        const comparisonBarCtx = document.getElementById('comparisonBarChart').getContext('2d');
+        let comparisonBarChart = null;
 
         // Функция для открытия вкладок
         function openTab(evt, tabName) {
@@ -1698,89 +1812,94 @@
                 }
             };
 
-            // Функция для обновления графика сравнения
+            const allProducts = {
+                // Орехи
+                walnut: nutritionData.nuts.walnut,
+                almond: nutritionData.nuts.almond,
+                peanut: nutritionData.nuts.peanut,
+                hazelnut: nutritionData.nuts.hazelnut,
+                cashew: nutritionData.nuts.cashew,
+                pistachio: nutritionData.nuts.pistachio,
+                brazil: nutritionData.nuts.brazil,
+                pine: nutritionData.nuts.pine,
+                // Мясо и рыба
+                beef: nutritionData.meat.beef,
+                pork: nutritionData.meat.pork,
+                chicken: nutritionData.meat.chicken,
+                salmon: nutritionData.meat.salmon
+            };
+
+
             function updateComparisonChart() {
-                const selectedNut = document.getElementById('nutSelector').value;
-                const selectedMeat = document.getElementById('meatSelector').value;
+                const product1Id = document.getElementById('product1Selector').value;
+                const product2Id = document.getElementById('product2Selector').value;
 
-                const nutData = nutritionData.nuts[selectedNut];
-                const meatData = nutritionData.meat[selectedMeat];
+                const product1Data = allProducts[product1Id];
+                const product2Data = allProducts[product2Id];
 
+                // Очищаем старые графики
                 if (comparisonRadarChart) {
                     comparisonRadarChart.destroy();
                 }
+                if (comparisonBarChart) {
+                    comparisonBarChart.destroy();
+                }
 
-                // Расширенный список показателей для сравнения
+                // Радарный график для сравнения многих параметров
                 const comparisonLabels = [
                     // Макронутриенты
                     'Белок', 'Жиры', 'Углеводы', 'Клетчатка', 'Калории',
                     // Минералы
-                    'Железо', 'Цинк', 'Магний', 'Кальций', 'Селен', 'Калий', 'Фосфор', 'Марганец', 'Медь',
-                    // Витамины
-                    'Витамин B1', 'Витамин B2', 'Витамин B3', 'Витамин B6', 'Фолиевая кислота'
+                    'Железо', 'Цинк', 'Магний', 'Кальций', 'Селен', 'Калий', 'Фосфор'
                 ];
 
                 // Подготавливаем данные с масштабированием для лучшей визуализации
-                // Некоторые показатели могут иметь существенную разницу в масштабе
-                const nutValues = [
-                    nutData.protein,
-                    nutData.fat,
-                    nutData.carbs,
-                    nutData.fiber,
-                    nutData.calories / 100,  // Масштабирование калорий
-                    nutData.iron,
-                    nutData.zinc,
-                    nutData.magnesium / 10,  // Масштабирование магния
-                    nutData.calcium / 10,    // Масштабирование кальция
-                    nutData.selenium,
-                    nutData.potassium / 100, // Масштабирование калия
-                    nutData.phosphorus / 100, // Масштабирование фосфора
-                    nutData.manganese * 10,  // Масштабирование марганца
-                    nutData.copper * 10,     // Масштабирование меди
-                    nutData.vitaminB1 * 10,  // Масштабирование витаминов
-                    nutData.vitaminB2 * 10,
-                    nutData.vitaminB3,
-                    nutData.vitaminB6 * 10,
-                    nutData.folate / 10
+                const product1Values = [
+                    product1Data.protein,
+                    product1Data.fat,
+                    product1Data.carbs,
+                    product1Data.fiber,
+                    product1Data.calories / 100,  // Масштабирование калорий
+                    product1Data.iron,
+                    product1Data.zinc,
+                    product1Data.magnesium / 10,  // Масштабирование магния
+                    product1Data.calcium / 10,    // Масштабирование кальция
+                    product1Data.selenium,
+                    product1Data.potassium / 100, // Масштабирование калия
+                    product1Data.phosphorus / 100 // Масштабирование фосфора
                 ];
 
-                const meatValues = [
-                    meatData.protein,
-                    meatData.fat,
-                    meatData.carbs,
-                    meatData.fiber,
-                    meatData.calories / 100,
-                    meatData.iron,
-                    meatData.zinc,
-                    meatData.magnesium / 10,
-                    meatData.calcium / 10,
-                    meatData.selenium,
-                    meatData.potassium / 100,
-                    meatData.phosphorus / 100,
-                    meatData.manganese * 10,
-                    meatData.copper * 10,
-                    meatData.vitaminB1 * 10,
-                    meatData.vitaminB2 * 10,
-                    meatData.vitaminB3,
-                    meatData.vitaminB6 * 10,
-                    meatData.folate / 10
+                const product2Values = [
+                    product2Data.protein,
+                    product2Data.fat,
+                    product2Data.carbs,
+                    product2Data.fiber,
+                    product2Data.calories / 100,
+                    product2Data.iron,
+                    product2Data.zinc,
+                    product2Data.magnesium / 10,
+                    product2Data.calcium / 10,
+                    product2Data.selenium,
+                    product2Data.potassium / 100,
+                    product2Data.phosphorus / 100
                 ];
 
+                // Создаем радарный график
                 comparisonRadarChart = new Chart(comparisonRadarCtx, {
                     type: 'radar',
                     data: {
                         labels: comparisonLabels,
                         datasets: [
                             {
-                                label: nutData.name,
-                                data: nutValues,
+                                label: product1Data.name,
+                                data: product1Values,
                                 backgroundColor: 'rgba(139, 90, 43, 0.2)',
                                 borderColor: 'rgba(139, 90, 43, 1)',
                                 pointBackgroundColor: 'rgba(139, 90, 43, 1)'
                             },
                             {
-                                label: meatData.name,
-                                data: meatValues,
+                                label: product2Data.name,
+                                data: product2Values,
                                 backgroundColor: 'rgba(192, 57, 43, 0.2)',
                                 borderColor: 'rgba(192, 57, 43, 1)',
                                 pointBackgroundColor: 'rgba(192, 57, 43, 1)'
@@ -1792,7 +1911,7 @@
                         plugins: {
                             title: {
                                 display: true,
-                                text: `Сравнение ${nutData.name} и ${meatData.name}`
+                                text: `Сравнение многих параметров`
                             },
                             tooltip: {
                                 callbacks: {
@@ -1813,18 +1932,8 @@
                                         } else if (paramName === 'Калий' || paramName === 'Фосфор') {
                                             originalValue = value * 100;
                                             units = 'мг';
-                                        } else if (paramName === 'Марганец' || paramName === 'Медь' ||
-                                            paramName === 'Витамин B1' || paramName === 'Витамин B2' ||
-                                            paramName === 'Витамин B6') {
-                                            originalValue = value / 10;
-                                            units = 'мг';
                                         } else if (paramName === 'Железо' || paramName === 'Цинк' || paramName === 'Селен') {
                                             units = 'мг';
-                                        } else if (paramName === 'Витамин B3') {
-                                            units = 'мг';
-                                        } else if (paramName === 'Фолиевая кислота') {
-                                            originalValue = value * 10;
-                                            units = 'мкг';
                                         }
 
                                         return `${label}: ${originalValue} ${units}`;
@@ -1848,17 +1957,159 @@
                     }
                 });
 
-                // Расширенная текстовая информация о сравнении
+                // Создаем столбчатый график для основных макронутриентов
+                const macroLabels = ['Белки', 'Жиры', 'Углеводы', 'Клетчатка'];
+                const nutrientLabels = [
+                    // Макронутриенты
+                    'Белки', 'Жиры', 'Углеводы', 'Клетчатка', 'Калории/10',
+                    // Минералы
+                    'Железо', 'Цинк', 'Магний/10', 'Кальций/10', 'Селен', 'Калий/100', 'Фосфор/100',
+                    // Витамины
+                    'B1', 'B2', 'B3', 'B6', 'Фол.к./100'
+                ];
+                const product1NutrientValues = [
+                    // Макронутриенты
+                    product1Data.protein,
+                    product1Data.fat,
+                    product1Data.carbs,
+                    product1Data.fiber,
+                    product1Data.calories / 10,
+                    // Минералы
+                    product1Data.iron,
+                    product1Data.zinc,
+                    product1Data.magnesium / 10,
+                    product1Data.calcium / 10,
+                    product1Data.selenium,
+                    product1Data.potassium / 100,
+                    product1Data.phosphorus / 100,
+                    // Витамины
+                    product1Data.vitaminB1,
+                    product1Data.vitaminB2,
+                    product1Data.vitaminB3,
+                    product1Data.vitaminB6,
+                    product1Data.folicAcid / 100
+                ];
+
+                const product2NutrientValues = [
+                    // Макронутриенты
+                    product2Data.protein,
+                    product2Data.fat,
+                    product2Data.carbs,
+                    product2Data.fiber,
+                    product2Data.calories / 10,
+                    // Минералы
+                    product2Data.iron,
+                    product2Data.zinc,
+                    product2Data.magnesium / 10,
+                    product2Data.calcium / 10,
+                    product2Data.selenium,
+                    product2Data.potassium / 100,
+                    product2Data.phosphorus / 100,
+                    // Витамины
+                    product2Data.vitaminB1,
+                    product2Data.vitaminB2,
+                    product2Data.vitaminB3,
+                    product2Data.vitaminB6,
+                    product2Data.folicAcid / 100
+                ];
+
+                comparisonBarChart = new Chart(comparisonBarCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: nutrientLabels,
+                        datasets: [
+                            {
+                                label: product1Data.name,
+                                data: product1NutrientValues,
+                                backgroundColor: 'rgba(139, 90, 43, 0.7)',
+                                borderColor: 'rgba(139, 90, 43, 1)',
+                                borderWidth: 1
+                            },
+                            {
+                                label: product2Data.name,
+                                data: product2NutrientValues,
+                                backgroundColor: 'rgba(192, 57, 43, 0.7)',
+                                borderColor: 'rgba(192, 57, 43, 1)',
+                                borderWidth: 1
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Сравнение всех нутриентов (масштабированные значения)'
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function (context) {
+                                        const label = context.dataset.label || '';
+                                        const paramName = context.chart.data.labels[context.dataIndex];
+                                        let value = context.raw;
+                                        let originalValue = value;
+                                        let units = 'г';
+
+                                        // Возвращаем оригинальные значения для масштабированных параметров
+                                        if (paramName === 'Калории/10') {
+                                            originalValue = value * 10;
+                                            units = 'ккал';
+                                        } else if (paramName === 'Магний/10' || paramName === 'Кальций/10') {
+                                            originalValue = value * 10;
+                                            units = 'мг';
+                                        } else if (paramName === 'Калий/100' || paramName === 'Фосфор/100') {
+                                            originalValue = value * 100;
+                                            units = 'мг';
+                                        } else if (paramName === 'Фол.к./100') {
+                                            originalValue = value * 100;
+                                            units = 'мкг';
+                                        } else if (paramName === 'Железо' || paramName === 'Цинк' || paramName === 'Селен' ||
+                                            paramName === 'B1' || paramName === 'B2' || paramName === 'B3' || paramName === 'B6') {
+                                            units = 'мг';
+                                        }
+
+                                        return `${label}: ${originalValue} ${units}`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    autoSkip: false,
+                                    maxRotation: 90,
+                                    minRotation: 45
+                                }
+                            },
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Значения (масштабированные)'
+                                }
+                            }
+                        }
+                    }
+                });
+
+                // Обновляем таблицу сравнения
+                updateComparisonTable(product1Data, product2Data);
+            }
+            // Функция для обновления графика сравнения
+            function updateComparisonTable(product1Data, product2Data) {
                 const comparisonDetails = document.getElementById('comparisonDetails');
 
-                // Создаем таблицу сравнения, включая больше показателей
+                // Создаем таблицу сравнения
                 let comparisonTable = `
-        <h4>Сравнение: ${nutData.name} vs ${meatData.name}</h4>
+        <h4>Подробное сравнение: ${product1Data.name} vs ${product2Data.name}</h4>
         <table class="comparison-table">
             <tr>
                 <th>Нутриент</th>
-                <th>${nutData.name}</th>
-                <th>${meatData.name}</th>
+                <th>${product1Data.name}</th>
+                <th>${product2Data.name}</th>
                 <th>Сравнение</th>
             </tr>
             <tr class="macro-row">
@@ -1867,11 +2118,11 @@
     `;
 
                 // Добавляем макронутриенты
-                comparisonTable += createComparisonRow('Белок', nutData.protein, meatData.protein, 'г');
-                comparisonTable += createComparisonRow('Жиры', nutData.fat, meatData.fat, 'г');
-                comparisonTable += createComparisonRow('Углеводы', nutData.carbs, meatData.carbs, 'г');
-                comparisonTable += createComparisonRow('Клетчатка', nutData.fiber, meatData.fiber, 'г');
-                comparisonTable += createComparisonRow('Калории', nutData.calories, meatData.calories, 'ккал');
+                comparisonTable += createComparisonRow('Белок', product1Data.protein, product2Data.protein, 'г');
+                comparisonTable += createComparisonRow('Жиры', product1Data.fat, product2Data.fat, 'г');
+                comparisonTable += createComparisonRow('Углеводы', product1Data.carbs, product2Data.carbs, 'г');
+                comparisonTable += createComparisonRow('Клетчатка', product1Data.fiber, product2Data.fiber, 'г');
+                comparisonTable += createComparisonRow('Калории', product1Data.calories, product2Data.calories, 'ккал');
 
                 // Добавляем минералы
                 comparisonTable += `
@@ -1879,13 +2130,13 @@
             <td colspan="4" class="category-header">Минералы</td>
         </tr>
     `;
-                comparisonTable += createComparisonRow('Железо', nutData.iron, meatData.iron, 'мг');
-                comparisonTable += createComparisonRow('Цинк', nutData.zinc, meatData.zinc, 'мг');
-                comparisonTable += createComparisonRow('Магний', nutData.magnesium, meatData.magnesium, 'мг');
-                comparisonTable += createComparisonRow('Кальций', nutData.calcium, meatData.calcium, 'мг');
-                comparisonTable += createComparisonRow('Селен', nutData.selenium, meatData.selenium, 'мкг');
-                comparisonTable += createComparisonRow('Калий', nutData.potassium, meatData.potassium, 'мг');
-                comparisonTable += createComparisonRow('Фосфор', nutData.phosphorus, meatData.phosphorus, 'мг');
+                comparisonTable += createComparisonRow('Железо', product1Data.iron, product2Data.iron, 'мг');
+                comparisonTable += createComparisonRow('Цинк', product1Data.zinc, product2Data.zinc, 'мг');
+                comparisonTable += createComparisonRow('Магний', product1Data.magnesium, product2Data.magnesium, 'мг');
+                comparisonTable += createComparisonRow('Кальций', product1Data.calcium, product2Data.calcium, 'мг');
+                comparisonTable += createComparisonRow('Селен', product1Data.selenium, product2Data.selenium, 'мкг');
+                comparisonTable += createComparisonRow('Калий', product1Data.potassium, product2Data.potassium, 'мг');
+                comparisonTable += createComparisonRow('Фосфор', product1Data.phosphorus, product2Data.phosphorus, 'мг');
 
                 // Добавляем витамины
                 comparisonTable += `
@@ -1893,34 +2144,11 @@
             <td colspan="4" class="category-header">Витамины</td>
         </tr>
     `;
-                comparisonTable += createComparisonRow('Витамин B1 (Тиамин)', nutData.vitaminB1, meatData.vitaminB1, 'мг');
-                comparisonTable += createComparisonRow('Витамин B2 (Рибофлавин)', nutData.vitaminB2, meatData.vitaminB2, 'мг');
-                comparisonTable += createComparisonRow('Витамин B3 (Ниацин)', nutData.vitaminB3, meatData.vitaminB3, 'мг');
-                comparisonTable += createComparisonRow('Витамин B6', nutData.vitaminB6, meatData.vitaminB6, 'мг');
-                comparisonTable += createComparisonRow('Фолиевая кислота', nutData.folicAcid, meatData.folicAcid, 'мкг');
-
-                // Добавляем витамин E только для орехов и витамин B12 только для мяса
-                if (nutData.vitaminE) {
-                    comparisonTable += `
-            <tr>
-                <td>Витамин E</td>
-                <td>${nutData.vitaminE} мг</td>
-                <td>-</td>
-                <td>В основном содержится в орехах</td>
-            </tr>
-        `;
-                }
-
-                if (meatData.vitaminB12) {
-                    comparisonTable += `
-            <tr>
-                <td>Витамин B12</td>
-                <td>-</td>
-                <td>${meatData.vitaminB12} мкг</td>
-                <td>Содержится только в продуктах животного происхождения</td>
-            </tr>
-        `;
-                }
+                comparisonTable += createComparisonRow('Витамин B1 (Тиамин)', product1Data.vitaminB1, product2Data.vitaminB1, 'мг');
+                comparisonTable += createComparisonRow('Витамин B2 (Рибофлавин)', product1Data.vitaminB2, product2Data.vitaminB2, 'мг');
+                comparisonTable += createComparisonRow('Витамин B3 (Ниацин)', product1Data.vitaminB3, product2Data.vitaminB3, 'мг');
+                comparisonTable += createComparisonRow('Витамин B6', product1Data.vitaminB6, product2Data.vitaminB6, 'мг');
+                comparisonTable += createComparisonRow('Фолиевая кислота', product1Data.folicAcid, product2Data.folicAcid, 'мкг');
 
                 comparisonTable += `</table>`;
 
@@ -1932,32 +2160,44 @@
     `;
 
                 // Сравнение белка
-                if (nutData.protein > meatData.protein) {
-                    conclusions += `<li><strong>Белок:</strong> ${nutData.name} содержит на ${Math.round((nutData.protein / meatData.protein - 1) * 100)}% больше белка, чем ${meatData.name}.</li>`;
+                if (product1Data.protein > product2Data.protein) {
+                    conclusions += `<li><strong>Белок:</strong> ${product1Data.name} содержит на ${Math.round((product1Data.protein / product2Data.protein - 1) * 100)}% больше белка, чем ${product2Data.name}.</li>`;
+                } else if (product1Data.protein < product2Data.protein) {
+                    conclusions += `<li><strong>Белок:</strong> Для получения такого же количества белка как в 100г ${product2Data.name}, необходимо съесть примерно ${Math.round(product2Data.protein / product1Data.protein * 100)}г ${product1Data.name}.</li>`;
                 } else {
-                    conclusions += `<li><strong>Белок:</strong> Для получения такого же количества белка как в 100г ${meatData.name}, необходимо съесть примерно ${Math.round(meatData.protein / nutData.protein * 100)}г ${nutData.name}.</li>`;
+                    conclusions += `<li><strong>Белок:</strong> Оба продукта содержат одинаковое количество белка.</li>`;
                 }
 
                 // Сравнение жиров
-                conclusions += `<li><strong>Жиры:</strong> ${nutData.name} содержит в ${(nutData.fat / meatData.fat)} раз больше жиров, чем ${meatData.name}.</li>`;
-
-                // Сравнение калорий
-                conclusions += `<li><strong>Калории:</strong> ${nutData.name} более калорийны - ${nutData.calories} ккал против ${meatData.calories} ккал в ${meatData.name}.</li>`;
-
-                // Сравнение минералов
-                if (nutData.magnesium > meatData.magnesium) {
-                    conclusions += `<li><strong>Микроэлементы:</strong> ${nutData.name} содержит в ${Math.round(nutData.magnesium / meatData.magnesium)} раз больше магния и в ${Math.round(nutData.calcium / meatData.calcium)} раз больше кальция, чем ${meatData.name}.</li>`;
+                if (product1Data.fat > product2Data.fat) {
+                    conclusions += `<li><strong>Жиры:</strong> ${product1Data.name} содержит в ${(product1Data.fat / product2Data.fat).toFixed(1)} раз больше жиров, чем ${product2Data.name}.</li>`;
+                } else if (product1Data.fat < product2Data.fat) {
+                    conclusions += `<li><strong>Жиры:</strong> ${product2Data.name} содержит в ${(product2Data.fat / product1Data.fat).toFixed(1)} раз больше жиров, чем ${product1Data.name}.</li>`;
+                } else {
+                    conclusions += `<li><strong>Жиры:</strong> Оба продукта содержат одинаковое количество жиров.</li>`;
                 }
 
-                // Особые преимущества орехов
-                conclusions += `<li><strong>Особые преимущества ${nutData.name}:</strong> Богаты растительными жирами, витамином E и клетчаткой.</li>`;
+                // Сравнение калорий
+                if (product1Data.calories > product2Data.calories) {
+                    conclusions += `<li><strong>Калории:</strong> ${product1Data.name} более калорийны - ${product1Data.calories} ккал против ${product2Data.calories} ккал в ${product2Data.name}.</li>`;
+                } else if (product1Data.calories < product2Data.calories) {
+                    conclusions += `<li><strong>Калории:</strong> ${product2Data.name} более калорийны - ${product2Data.calories} ккал против ${product1Data.calories} ккал в ${product1Data.name}.</li>`;
+                } else {
+                    conclusions += `<li><strong>Калории:</strong> Оба продукта имеют одинаковую калорийность.</li>`;
+                }
 
-                // Особые преимущества мяса
-                conclusions += `<li><strong>Особые преимущества ${meatData.name}:</strong> Содержит витамин B12, который отсутствует в растительной пище, и обычно имеет более высокую биодоступность железа.</li>`;
+                // Сравнение магния и кальция
+                if (product1Data.magnesium > product2Data.magnesium * 1.5) {
+                    conclusions += `<li><strong>Магний:</strong> ${product1Data.name} содержит в ${Math.round(product1Data.magnesium / product2Data.magnesium)} раз больше магния, чем ${product2Data.name}.</li>`;
+                }
+
+                if (product1Data.calcium > product2Data.calcium * 1.5) {
+                    conclusions += `<li><strong>Кальций:</strong> ${product1Data.name} содержит в ${Math.round(product1Data.calcium / product2Data.calcium)} раз больше кальция, чем ${product2Data.name}.</li>`;
+                }
 
                 conclusions += `
             </ul>
-            <p><strong>Общий вывод:</strong> При замене ${meatData.name} на ${nutData.name} учитывайте большее содержание жиров и калорий в орехах. Орехи могут быть хорошим источником растительного белка, но не полной заменой животному белку из-за различий в аминокислотном составе.</p>
+            <p><strong>Общий вывод:</strong> При выборе между ${product1Data.name} и ${product2Data.name} учитывайте их различия в содержании питательных веществ и калорийности, а также свои диетические потребности.</p>
         </div>
     `;
 
@@ -1968,7 +2208,7 @@
             function createComparisonRow(nutrientName, nutValue, meatValue, units) {
                 let comparison = '';
                 if (meatValue > 0) {
-                    comparison = `${Math.round(nutValue / meatValue * 100)}% от содержания в мясе`;
+                    comparison = `${Math.round(nutValue / meatValue * 100)}% от содержания во 2м продукте`;
                 } else {
                     comparison = 'Невозможно рассчитать (деление на ноль)';
                 }
@@ -2000,8 +2240,8 @@
             }
 
             // Обработчики событий для селекторов
-            document.getElementById('nutSelector').addEventListener('change', updateComparisonChart);
-            document.getElementById('meatSelector').addEventListener('change', updateComparisonChart);
+            document.getElementById('product1Selector').addEventListener('change', updateComparisonChart);
+            document.getElementById('product2Selector').addEventListener('change', updateComparisonChart);
 
             // Инициализация инструмента сравнения
             updateComparisonChart();
