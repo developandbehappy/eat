@@ -4,42 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Основные метатеги для SEO -->
-    <meta name="description" content="Подробное сравнение питательной ценности орехов и мяса. Информация о белках, жирах, витаминах и минералах в орехах и мясе. Узнайте, как заменить мясо орехами в своем рационе.">
-    <meta name="keywords" content="орехи, мясо, питательная ценность, белки, жиры, минералы, витамины, растительный белок, грецкие орехи, миндаль, фундук, кешью, фисташки, говядина, курица, свинина, лосось, здоровое питание, вегетарианство">
+    <meta name="description"
+        content="Подробное сравнение питательной ценности орехов и мяса. Информация о белках, жирах, витаминах и минералах в орехах и мясе. Узнайте, как заменить мясо орехами в своем рационе.">
+    <meta name="keywords"
+        content="орехи, мясо, питательная ценность, белки, жиры, минералы, витамины, растительный белок, грецкие орехи, миндаль, фундук, кешью, фисташки, говядина, курица, свинина, лосось, здоровое питание, вегетарианство">
     <meta name="author" content="Специалист по здоровому питанию">
-    
+
     <!-- Метатеги для управления индексацией -->
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://developandbehappy.github.io/eat/index.html">
-    
+
     <!-- Метатеги Open Graph для социальных сетей -->
     <meta property="og:title" content="Сравнение орехов и мяса: питательная ценность и возможности замены">
-    <meta property="og:description" content="Подробное сравнение питательной ценности орехов и мяса. Узнайте, как орехи могут заменить мясо в вашем рационе.">
+    <meta property="og:description"
+        content="Подробное сравнение питательной ценности орехов и мяса. Узнайте, как орехи могут заменить мясо в вашем рационе.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://developandbehappy.github.io/eat/index.html">
     <meta property="og:image" content="https://developandbehappy.github.io/eat/images/nuts-and-meat-comparison.jpg">
-    
+
     <!-- Метатеги для Яндекса -->
     <meta name="yandex-verification" content="ваш_код_верификации">
     <meta property="ya:ovs" content="яндекс_код_для_верификации_если_есть">
-    
+
     <!-- Метатеги Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Сравнение орехов и мяса: питательная ценность и возможности замены">
-    <meta name="twitter:description" content="Подробное сравнение питательной ценности орехов и мяса. Узнайте, как орехи могут заменить мясо в вашем рационе.">
-    
+    <meta name="twitter:description"
+        content="Подробное сравнение питательной ценности орехов и мяса. Узнайте, как орехи могут заменить мясо в вашем рационе.">
+
     <!-- Метатеги для мобильной оптимизации (добавляем к существующему viewport) -->
     <meta name="theme-color" content="#8b5a2b">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    
+
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    
+
     <title>Сравнение орехов и мяса: питательная ценность и возможности замены</title>
     <style>
         body {
@@ -257,6 +261,20 @@
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
+        }
+
+
+        .comparison-table td:last-child {
+            text-align: right;
+            font-weight: 500;
+        }
+
+        .comparison-table .macro-row .category-header,
+        .comparison-table .minerals-row .category-header,
+        .comparison-table .vitamins-row .category-header,
+        .comparison-table .other-row .category-header {
+            text-align: left;
+            font-weight: bold;
         }
 
         .category-header {
@@ -2111,44 +2129,74 @@
                 <th>${product1Data.name}</th>
                 <th>${product2Data.name}</th>
                 <th>Сравнение</th>
+                <th>Рекомендуемая суточная норма (70 кг)</th>
             </tr>
             <tr class="macro-row">
-                <td colspan="4" class="category-header">Макронутриенты</td>
+                <td colspan="5" class="category-header">Макронутриенты</td>
             </tr>
     `;
 
                 // Добавляем макронутриенты
-                comparisonTable += createComparisonRow('Белок', product1Data.protein, product2Data.protein, 'г');
-                comparisonTable += createComparisonRow('Жиры', product1Data.fat, product2Data.fat, 'г');
-                comparisonTable += createComparisonRow('Углеводы', product1Data.carbs, product2Data.carbs, 'г');
-                comparisonTable += createComparisonRow('Клетчатка', product1Data.fiber, product2Data.fiber, 'г');
-                comparisonTable += createComparisonRow('Калории', product1Data.calories, product2Data.calories, 'ккал');
+                comparisonTable += createComparisonRowWithRDI('Белок', product1Data.protein, product2Data.protein, 'г', '56-70');
+                comparisonTable += createComparisonRowWithRDI('Жиры', product1Data.fat, product2Data.fat, 'г', '60-80');
+                comparisonTable += createComparisonRowWithRDI('Углеводы', product1Data.carbs, product2Data.carbs, 'г', '250-350');
+                comparisonTable += createComparisonRowWithRDI('Клетчатка', product1Data.fiber, product2Data.fiber, 'г', '25-30');
+                comparisonTable += createComparisonRowWithRDI('Калории', product1Data.calories, product2Data.calories, 'ккал', '2000-2500');
 
                 // Добавляем минералы
                 comparisonTable += `
         <tr class="minerals-row">
-            <td colspan="4" class="category-header">Минералы</td>
+            <td colspan="5" class="category-header">Минералы</td>
         </tr>
     `;
-                comparisonTable += createComparisonRow('Железо', product1Data.iron, product2Data.iron, 'мг');
-                comparisonTable += createComparisonRow('Цинк', product1Data.zinc, product2Data.zinc, 'мг');
-                comparisonTable += createComparisonRow('Магний', product1Data.magnesium, product2Data.magnesium, 'мг');
-                comparisonTable += createComparisonRow('Кальций', product1Data.calcium, product2Data.calcium, 'мг');
-                comparisonTable += createComparisonRow('Селен', product1Data.selenium, product2Data.selenium, 'мкг');
-                comparisonTable += createComparisonRow('Калий', product1Data.potassium, product2Data.potassium, 'мг');
-                comparisonTable += createComparisonRow('Фосфор', product1Data.phosphorus, product2Data.phosphorus, 'мг');
+                comparisonTable += createComparisonRowWithRDI('Железо', product1Data.iron, product2Data.iron, 'мг', '8-10');
+                comparisonTable += createComparisonRowWithRDI('Цинк', product1Data.zinc, product2Data.zinc, 'мг', '10-12');
+                comparisonTable += createComparisonRowWithRDI('Магний', product1Data.magnesium, product2Data.magnesium, 'мг', '350-400');
+                comparisonTable += createComparisonRowWithRDI('Кальций', product1Data.calcium, product2Data.calcium, 'мг', '1000-1200');
+                comparisonTable += createComparisonRowWithRDI('Селен', product1Data.selenium, product2Data.selenium, 'мкг', '55-70');
+                comparisonTable += createComparisonRowWithRDI('Калий', product1Data.potassium, product2Data.potassium, 'мг', '3500-4700');
+                comparisonTable += createComparisonRowWithRDI('Фосфор', product1Data.phosphorus, product2Data.phosphorus, 'мг', '700-800');
+                comparisonTable += createComparisonRowWithRDI('Марганец', product1Data.manganese || 0, product2Data.manganese || 0, 'мг', '2.3-3.0');
+                comparisonTable += createComparisonRowWithRDI('Медь', product1Data.copper || 0, product2Data.copper || 0, 'мг', '0.9-1.3');
+                comparisonTable += createComparisonRowWithRDI('Йод', 'N/A', 'N/A', 'мкг', '150');
+                comparisonTable += createComparisonRowWithRDI('Хром', 'N/A', 'N/A', 'мкг', '25-35');
+                comparisonTable += createComparisonRowWithRDI('Молибден', 'N/A', 'N/A', 'мкг', '45-50');
+                comparisonTable += createComparisonRowWithRDI('Натрий', 'N/A', 'N/A', 'мг', '1500-2300');
 
                 // Добавляем витамины
                 comparisonTable += `
         <tr class="vitamins-row">
-            <td colspan="4" class="category-header">Витамины</td>
+            <td colspan="5" class="category-header">Витамины</td>
         </tr>
     `;
-                comparisonTable += createComparisonRow('Витамин B1 (Тиамин)', product1Data.vitaminB1, product2Data.vitaminB1, 'мг');
-                comparisonTable += createComparisonRow('Витамин B2 (Рибофлавин)', product1Data.vitaminB2, product2Data.vitaminB2, 'мг');
-                comparisonTable += createComparisonRow('Витамин B3 (Ниацин)', product1Data.vitaminB3, product2Data.vitaminB3, 'мг');
-                comparisonTable += createComparisonRow('Витамин B6', product1Data.vitaminB6, product2Data.vitaminB6, 'мг');
-                comparisonTable += createComparisonRow('Фолиевая кислота', product1Data.folicAcid, product2Data.folicAcid, 'мкг');
+                comparisonTable += createComparisonRowWithRDI('Витамин A', 'N/A', 'N/A', 'мкг', '800-1000');
+                comparisonTable += createComparisonRowWithRDI('Витамин C', 'N/A', 'N/A', 'мг', '75-90');
+                comparisonTable += createComparisonRowWithRDI('Витамин D', 'N/A', product2Data.vitaminD || 'N/A', 'мкг', '15-20');
+                comparisonTable += createComparisonRowWithRDI('Витамин E', product1Data.vitaminE || 'N/A', 'N/A', 'мг', '15');
+                comparisonTable += createComparisonRowWithRDI('Витамин K', 'N/A', 'N/A', 'мкг', '90-120');
+                comparisonTable += createComparisonRowWithRDI('Витамин B1 (Тиамин)', product1Data.vitaminB1, product2Data.vitaminB1, 'мг', '1.1-1.2');
+                comparisonTable += createComparisonRowWithRDI('Витамин B2 (Рибофлавин)', product1Data.vitaminB2, product2Data.vitaminB2, 'мг', '1.1-1.3');
+                comparisonTable += createComparisonRowWithRDI('Витамин B3 (Ниацин)', product1Data.vitaminB3, product2Data.vitaminB3, 'мг', '14-16');
+                comparisonTable += createComparisonRowWithRDI('Витамин B5 (Пантотеновая кислота)', 'N/A', 'N/A', 'мг', '5');
+                comparisonTable += createComparisonRowWithRDI('Витамин B6', product1Data.vitaminB6, product2Data.vitaminB6, 'мг', '1.3-1.7');
+                comparisonTable += createComparisonRowWithRDI('Витамин B7 (Биотин)', 'N/A', 'N/A', 'мкг', '30');
+                comparisonTable += createComparisonRowWithRDI('Витамин B9 (Фолиевая кислота)', product1Data.folicAcid, product2Data.folicAcid, 'мкг', '400');
+                comparisonTable += createComparisonRowWithRDI('Витамин B12', 'N/A', product2Data.vitaminB12 || 'N/A', 'мкг', '2.4');
+
+                // Другие питательные вещества
+                comparisonTable += `
+        <tr class="other-row">
+            <td colspan="5" class="category-header">Другие питательные вещества</td>
+        </tr>
+    `;
+                comparisonTable += createComparisonRowWithRDI('Омега-3 жирные кислоты', 'N/A', 'N/A', 'г', '1.1-1.6');
+                comparisonTable += createComparisonRowWithRDI('Омега-6 жирные кислоты', 'N/A', 'N/A', 'г', '14-17');
+                comparisonTable += createComparisonRowWithRDI('Холестерин', 'N/A', product2Data.cholesterol || 'N/A', 'мг', '<300');
+                comparisonTable += createComparisonRowWithRDI('Хлорофилл', 'N/A', 'N/A', 'мг', 'Не установлена');
+                comparisonTable += createComparisonRowWithRDI('Коэнзим Q10', 'N/A', 'N/A', 'мг', '30-100');
+                comparisonTable += createComparisonRowWithRDI('Ликопин', 'N/A', 'N/A', 'мг', '6-15');
+                comparisonTable += createComparisonRowWithRDI('Лютеин и Зеаксантин', 'N/A', 'N/A', 'мг', '6-10');
+                comparisonTable += createComparisonRowWithRDI('Ресвератрол', 'N/A', 'N/A', 'мг', 'Не установлена');
 
                 comparisonTable += `</table>`;
 
@@ -2195,9 +2243,14 @@
                     conclusions += `<li><strong>Кальций:</strong> ${product1Data.name} содержит в ${Math.round(product1Data.calcium / product2Data.calcium)} раз больше кальция, чем ${product2Data.name}.</li>`;
                 }
 
+                // Добавляем вывод о витаминах и минералах, которые отсутствуют
+                conclusions += `<li><strong>Витамин B12:</strong> Присутствует только в мясе и рыбе, отсутствует в растительных продуктах. Важен для нервной системы и кроветворения.</li>`;
+                conclusions += `<li><strong>Витамин C:</strong> Отсутствует как в мясе, так и в орехах. Необходимо получать из фруктов и овощей.</li>`;
+                conclusions += `<li><strong>Витамин D:</strong> В значимых количествах содержится только в жирной рыбе. Рекомендуется дополнительно получать с солнечными ваннами или добавками.</li>`;
+
                 conclusions += `
             </ul>
-            <p><strong>Общий вывод:</strong> При выборе между ${product1Data.name} и ${product2Data.name} учитывайте их различия в содержании питательных веществ и калорийности, а также свои диетические потребности.</p>
+            <p><strong>Общий вывод:</strong> При выборе между ${product1Data.name} и ${product2Data.name} учитывайте их различия в содержании питательных веществ и калорийности, а также свои диетические потребности. Для полноценного питания необходимо включать в рацион разнообразные продукты, чтобы получать все необходимые витамины и минералы.</p>
         </div>
     `;
 
@@ -2205,28 +2258,32 @@
             }
 
             // Вспомогательная функция для создания строки таблицы сравнения
-            function createComparisonRow(nutrientName, nutValue, meatValue, units) {
+            function createComparisonRowWithRDI(nutrientName, nutValue, meatValue, units, rdi) {
                 let comparison = '';
-                if (meatValue > 0) {
+                if (nutValue === 'N/A' || meatValue === 'N/A') {
+                    comparison = 'Невозможно рассчитать';
+                } else if (meatValue > 0) {
                     comparison = `${Math.round(nutValue / meatValue * 100)}% от содержания во 2м продукте`;
                 } else {
                     comparison = 'Невозможно рассчитать (деление на ноль)';
                 }
 
                 // Добавляем визуальный индикатор содержания нутриента
-                const ratio = nutValue / meatValue;
                 let indicator = '';
 
-                if (ratio > 1.5) {
-                    indicator = '<span class="higher">▲</span>'; // Значительно больше в орехах
-                } else if (ratio > 1.1) {
-                    indicator = '<span class="slightly-higher">△</span>'; // Немного больше в орехах
-                } else if (ratio < 0.5) {
-                    indicator = '<span class="lower">▼</span>'; // Значительно меньше в орехах
-                } else if (ratio < 0.9) {
-                    indicator = '<span class="slightly-lower">▽</span>'; // Немного меньше в орехах
-                } else {
-                    indicator = '<span class="similar">≈</span>'; // Примерно одинаково
+                if (nutValue !== 'N/A' && meatValue !== 'N/A') {
+                    const ratio = nutValue / meatValue;
+                    if (ratio > 1.5) {
+                        indicator = '<span class="higher">▲</span>'; // Значительно больше в первом продукте
+                    } else if (ratio > 1.1) {
+                        indicator = '<span class="slightly-higher">△</span>'; // Немного больше в первом продукте
+                    } else if (ratio < 0.5) {
+                        indicator = '<span class="lower">▼</span>'; // Значительно меньше в первом продукте
+                    } else if (ratio < 0.9) {
+                        indicator = '<span class="slightly-lower">▽</span>'; // Немного меньше в первом продукте
+                    } else {
+                        indicator = '<span class="similar">≈</span>'; // Примерно одинаково
+                    }
                 }
 
                 return `
@@ -2235,6 +2292,7 @@
             <td>${nutValue} ${units} ${indicator}</td>
             <td>${meatValue} ${units}</td>
             <td>${comparison}</td>
+            <td>${rdi} ${units}</td>
         </tr>
     `;
             }
